@@ -1,4 +1,5 @@
 import requests
+import urllib3
 from bs4 import BeautifulSoup
 import json
 import smtplib
@@ -10,6 +11,8 @@ URL = "https://www.nhg.at/angebot/"
 EMAIL_USER = os.environ["EMAIL_USER"]
 EMAIL_PASSWORD = os.environ["EMAIL_PASSWORD"]
 EMAIL_TO = os.environ["EMAIL_TO"]
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def load_known():
     try:
