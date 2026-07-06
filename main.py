@@ -42,7 +42,11 @@ def send_mail(new_items):
     server.quit()
 
 def scrape():
-    r = requests.get(URL, timeout=30, verify=False)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0 Safari/537.36"
+    }
+
+    r = requests.get(URL, headers=headers, timeout=30, verify=False)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
 
