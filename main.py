@@ -43,6 +43,7 @@ def send_mail(new_items):
 
 def scrape():
     r = requests.get(URL, timeout=30, verify=False)
+    r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
 
     items = []
@@ -62,7 +63,8 @@ def main():
 
     if new:
         send_mail(new)
-        save_known(current)
+
+    save_known(current)
 
 if __name__ == "__main__":
     main()
