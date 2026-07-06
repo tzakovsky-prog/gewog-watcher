@@ -39,7 +39,7 @@ def send_mail(new_items):
     server.quit()
 
 def scrape():
-    r = requests.get(URL)
+    r = requests.get(URL, timeout=30, verify=False)
     soup = BeautifulSoup(r.text, "html.parser")
 
     items = []
